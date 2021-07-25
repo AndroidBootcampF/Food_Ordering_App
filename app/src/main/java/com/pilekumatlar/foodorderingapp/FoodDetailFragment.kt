@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.pilekumatlar.foodorderingapp.databinding.FragmentFoodDetailBinding
 
 class FoodDetailFragment : Fragment() {
@@ -24,7 +25,14 @@ class FoodDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding
+        binding.apply {
+            buttonFoodAddCart.setOnClickListener {
+                Toast.makeText(context, "Sepete eklendi.", Toast.LENGTH_SHORT).show()
+            }
+            imageButtonFoodShare.setOnClickListener {
+                Toast.makeText(context, "Paylasildi.", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     override fun onDestroyView() {
