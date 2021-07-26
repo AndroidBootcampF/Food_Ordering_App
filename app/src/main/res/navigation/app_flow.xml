@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_flow"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        tools:layout="@layout/fragment_list_restaurant"
+        android:id="@+id/fragmentListRestaurant"
+        android:name="com.pilekumatlar.foodorderingapp.fragments.lists.FragmentListRestaurant"
+        android:label="FragmentListRestaurant" >
+        <action
+            android:id="@+id/action_fragmentListRestaurant_to_fragmentAddRestaurant"
+            app:destination="@id/fragmentAddRestaurant" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_add_restaurant"
+        android:id="@+id/fragmentAddRestaurant"
+        android:name="com.pilekumatlar.foodorderingapp.fragments.addingfragments.FragmentAddRestaurant"
+        android:label="FragmentAddRestaurant" />
+    <fragment
+        tools:layout="@layout/fragment_splash"
+        android:id="@+id/splashFragment"
+        android:name="com.pilekumatlar.foodorderingapp.fragments.splash.SplashFragment"
+        android:label="SplashFragment">
+        <action
+            android:id="@+id/action_splashFragment_to_fragmentListRestaurant"
+            app:destination="@id/fragmentListRestaurant" />
+    </fragment>
+</navigation>
