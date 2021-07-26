@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "265703755718",
+    "firebase_url": "https://food-ordering-app-5cb73-default-rtdb.firebaseio.com",
+    "project_id": "food-ordering-app-5cb73",
+    "storage_bucket": "food-ordering-app-5cb73.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:265703755718:android:53998642d6d7576163acc7",
+        "android_client_info": {
+          "package_name": "com.pilekumatlar.foodorderingapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "265703755718-2g39rjkbbddjuvphs49els7co7lf5469.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2c_RnbUVeqp3nhe__yMP-2OMExd0G5t8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "265703755718-2g39rjkbbddjuvphs49els7co7lf5469.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
