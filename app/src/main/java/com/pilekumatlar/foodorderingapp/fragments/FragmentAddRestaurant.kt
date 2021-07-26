@@ -51,7 +51,6 @@ class FragmentAddRestaurant:Fragment(R.layout.fragment_add_restaurant) {
             mFirestore.collection("Restaurants")
                 .add(postHashMap)
                 .addOnCompleteListener {
-
                     Log.v("Restaurant","Restaurant Ekleme Başarılı")
                 }
                 .addOnFailureListener {

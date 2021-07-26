@@ -7,11 +7,10 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-<<<<<<< HEAD
     <color name="yellow">#FFEB3B</color>
     <color name="orange">#FF9800</color>
     <color name="text">#FF5C58</color>
-=======
+
 
     <color name="red">#ff0004</color>
     <color name="selectedRed">#b50003</color>

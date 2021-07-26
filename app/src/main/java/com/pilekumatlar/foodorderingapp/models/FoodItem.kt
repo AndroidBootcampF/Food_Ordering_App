@@ -1,5 +1,9 @@
 package com.pilekumatlar.foodorderingapp.models
 
-data class FoodItem(   var name: String,
-                       var description: String,
-                       var price: Int,)
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
+data class FoodItem(   var name: String="",
+                       var description: String="",
+                       var price: String="") : Parcelable

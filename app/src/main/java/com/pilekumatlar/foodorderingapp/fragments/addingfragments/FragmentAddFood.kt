@@ -40,7 +40,7 @@ class FragmentAddFood : Fragment(R.layout.fragment_add_food_item) {
             var foodDescription: String = binding.editTextFoodDescription.text.toString()
             var foodPrice: String = binding.editTextFoodPrice.text.toString()
 
-            val foodInformations = FoodItem(foodName, foodDescription, foodPrice.toInt())
+            val foodInformations = FoodItem(foodName, foodDescription, foodPrice)
 
             mFirestore.collection("Foods")
                 .document()

@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_fragmentListRestaurant_to_fragmentAddRestaurant"
             app:destination="@id/fragmentAddRestaurant" />
+        <action
+            android:id="@+id/action_fragmentListRestaurant_to_restaurantDetailFragment"
+            app:destination="@id/restaurantDetailFragment" />
     </fragment>
     <fragment
         tools:layout="@layout/fragment_add_restaurant"
@@ -27,5 +30,19 @@
         <action
             android:id="@+id/action_splashFragment_to_fragmentListRestaurant"
             app:destination="@id/fragmentListRestaurant" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_restaurant_detail"
+        android:id="@+id/restaurantDetailFragment"
+        android:name="com.pilekumatlar.foodorderingapp.RestaurantDetailFragment"
+        android:label="RestaurantDetailFragment" >
+        <argument
+            android:name="name"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="location"
+            app:argType="string"
+            app:nullable="true" />
     </fragment>
 </navigation>

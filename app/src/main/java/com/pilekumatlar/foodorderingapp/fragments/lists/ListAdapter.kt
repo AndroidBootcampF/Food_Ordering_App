@@ -9,6 +9,7 @@ import com.pilekumatlar.foodorderingapp.models.restaurants
 
 class ListAdapter : RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
     private var listTwo = ArrayList<restaurants>()
+
     private var listener: IRestaurantOnClickListener? = null
 
     class ListViewHolder(val binding: ItemRestaurantsBinding) :
@@ -38,10 +39,12 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
     override fun getItemCount(): Int = listTwo.size
 
 
+
     fun setRestaurantDataTwo(list: ArrayList<restaurants>) {
         this.listTwo = list
         notifyDataSetChanged()
     }
+
 
     fun setRestaurantOnClickListener(listener: IRestaurantOnClickListener) {
         this.listener = listener
