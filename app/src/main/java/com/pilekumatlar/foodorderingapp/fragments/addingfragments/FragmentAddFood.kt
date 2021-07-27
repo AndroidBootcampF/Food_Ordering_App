@@ -13,6 +13,7 @@ import com.pilekumatlar.foodorderingapp.databinding.ActivityMainBinding.inflate
 import com.pilekumatlar.foodorderingapp.databinding.FragmentAddFoodItemBinding
 import com.pilekumatlar.foodorderingapp.databinding.FragmentAddFoodItemBinding.inflate
 import com.pilekumatlar.foodorderingapp.models.FoodItem
+import com.pilekumatlar.foodorderingapp.models.restaurants
 
 class FragmentAddFood : Fragment(R.layout.fragment_add_food_item) {
     private var _binding: FragmentAddFoodItemBinding? = null
@@ -40,7 +41,7 @@ class FragmentAddFood : Fragment(R.layout.fragment_add_food_item) {
             var foodDescription: String = binding.editTextFoodDescription.text.toString()
             var foodPrice: String = binding.editTextFoodPrice.text.toString()
 
-            val foodInformations = FoodItem(foodName, foodDescription, foodPrice.toInt())
+            val foodInformations = FoodItem(foodName, foodDescription, foodPrice)
 
             mFirestore.collection("Foods")
                 .document()
