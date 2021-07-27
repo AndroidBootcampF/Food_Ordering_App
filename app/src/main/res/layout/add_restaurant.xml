@@ -10,19 +10,19 @@
         android:id="@+id/imageView"
         android:layout_width="130dp"
         android:layout_height="178dp"
-        android:src="@drawable/cutlery"
+        android:src="@drawable/store"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textFood"
+        android:id="@+id/textRestaurant"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
         android:inputType="text"
-        android:text="@string/add_food"
+        android:text="@string/add_restaurant"
         android:fontFamily="@font/dm_serif_display_italic"
         android:textColor="@color/text"
         android:textSize="40sp"
@@ -33,104 +33,62 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <EditText
-        android:id="@+id/editTextFoodName"
+        android:id="@+id/editTextRestaurantName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/et_border"
+        android:ems="10"
+        android:fontFamily="@font/dm_serif_display_italic"
+        android:hint="@string/restaurant_name"
+        android:inputType="text"
+        android:padding="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textRestaurant" />
+
+    <EditText
+        android:id="@+id/editTextRestaurantLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:background="@drawable/et_border"
         android:ems="10"
-        android:hint="@string/food_name"
+        android:fontFamily="@font/dm_serif_display_italic"
+        android:hint="@string/restaurant_location"
         android:inputType="text"
-        android:fontFamily="@font/dm_serif_display_italic"
         android:padding="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textFood" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextRestaurantName" />
 
-    <EditText
-        android:id="@+id/editTextFoodPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/et_border"
-        android:ems="10"
-        android:hint="@string/food_price"
-        android:fontFamily="@font/dm_serif_display_italic"
-        android:inputType="number"
-        android:padding="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextFoodName" />
-
-
-    <EditText
-        android:id="@+id/editTextFoodDescription"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/et_border"
-        android:ems="10"
-        android:hint="@string/food_description"
-        android:fontFamily="@font/dm_serif_display_italic"
-        android:inputType="text"
-        android:padding="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextFoodPrice" />
-
-    <Button
-        android:id="@+id/btnAddImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/et_border"
-        android:drawableLeft="@drawable/ic_baseline_add_photo_alternate_24"
-        android:gravity="center"
-        android:padding="12dp"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp"
-        android:text="@string/upload_image"
-        android:fontFamily="@font/dm_serif_display_italic"
-        android:textAllCaps="false"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        app:backgroundTint="@color/text"
-        app:icon="@drawable/ic_baseline_add_photo_alternate_24"
-        app:iconGravity="textStart"
-        app:iconPadding="1dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextFoodDescription" />
 
     <TextView
-        android:id="@+id/textCancelFood"
+        android:id="@+id/textCancelRestaurant"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="12dp"
-        android:text="@string/cancel"
+        android:layout_marginTop="24dp"
         android:fontFamily="@font/dm_serif_display_italic"
+        android:text="@string/cancel"
         android:textColor="@color/orange"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnAddImage" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextRestaurantLocation" />
 
     <TextView
-        android:id="@+id/textAddFood"
+        android:id="@+id/textAddRestaurant"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="108dp"
-        android:text="@string/add"
         android:fontFamily="@font/dm_serif_display_italic"
+        android:text="@string/add"
         android:textColor="@color/teal_200"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnAddImage" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextRestaurantLocation" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
