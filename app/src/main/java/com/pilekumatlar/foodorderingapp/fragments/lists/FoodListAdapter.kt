@@ -4,9 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.pilekumatlar.foodorderingapp.databinding.ItemFoodBinding
-import com.pilekumatlar.foodorderingapp.databinding.ItemRestaurantsBinding
 import com.pilekumatlar.foodorderingapp.models.FoodItem
-import com.pilekumatlar.foodorderingapp.models.restaurants
 
 class FoodListAdapter : RecyclerView.Adapter<FoodListAdapter.ListViewHolder>() {
 
@@ -19,7 +17,6 @@ class FoodListAdapter : RecyclerView.Adapter<FoodListAdapter.ListViewHolder>() {
             binding.textName.text = foodItem.name
             binding.textPrice.text = foodItem.price
             binding.itemFoodCardView.setOnClickListener { listener?.onClick(foodItem) }
-
         }
     }
 
@@ -34,9 +31,8 @@ class FoodListAdapter : RecyclerView.Adapter<FoodListAdapter.ListViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        var item = this.listFood[position]
+        val item = this.listFood[position]
         holder.bind(item, listener)
-
     }
 
     override fun getItemCount(): Int = listFood.size
@@ -49,5 +45,4 @@ class FoodListAdapter : RecyclerView.Adapter<FoodListAdapter.ListViewHolder>() {
     fun setFoodOnClickListener(listener: IFoodOnClickListener) {
         this.listener = listener
     }
-
 }

@@ -4,20 +4,19 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.pilekumatlar.foodorderingapp.databinding.ItemRestaurantsBinding
-import com.pilekumatlar.foodorderingapp.models.FoodItem
-import com.pilekumatlar.foodorderingapp.models.restaurants
+import com.pilekumatlar.foodorderingapp.models.Restaurants
 
 class ListAdapter : RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
-    private var listTwo = ArrayList<restaurants>()
+    private var listTwo = ArrayList<Restaurants>()
 
     private var listener: IRestaurantOnClickListener? = null
 
     class ListViewHolder(val binding: ItemRestaurantsBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(restaurants: restaurants, listener: IRestaurantOnClickListener?) {
-            binding.nameTextView.text = restaurants.restaurantName
-            binding.locationTextView.text = restaurants.restaurantLocation
-            binding.containerCardView.setOnClickListener { listener?.onClick(restaurants) }
+        fun bind(Restaurants: Restaurants, listener: IRestaurantOnClickListener?) {
+            binding.nameTextView.text = Restaurants.restaurantName
+            binding.locationTextView.text = Restaurants.restaurantLocation
+            binding.containerCardView.setOnClickListener { listener?.onClick(Restaurants) }
         }
     }
 
@@ -32,18 +31,16 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        var item = this.listTwo[position]
+        val item = this.listTwo[position]
         holder.bind(item, listener)
     }
 
     override fun getItemCount(): Int = listTwo.size
 
-
-    fun setRestaurantDataTwo(list: ArrayList<restaurants>) {
+    fun setRestaurantDataTwo(list: ArrayList<Restaurants>) {
         this.listTwo = list
         notifyDataSetChanged()
     }
-
 
     fun setRestaurantOnClickListener(listener: IRestaurantOnClickListener) {
         this.listener = listener

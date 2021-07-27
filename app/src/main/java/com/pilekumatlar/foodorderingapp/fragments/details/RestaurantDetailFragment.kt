@@ -17,7 +17,7 @@ import com.pilekumatlar.foodorderingapp.R
 import com.pilekumatlar.foodorderingapp.databinding.FragmentRestaurantDetailBinding
 import com.pilekumatlar.foodorderingapp.fragments.lists.*
 import com.pilekumatlar.foodorderingapp.models.FoodItem
-import com.pilekumatlar.foodorderingapp.models.restaurants
+import com.pilekumatlar.foodorderingapp.models.Restaurants
 
 
 class RestaurantDetailFragment : Fragment(R.layout.fragment_restaurant_detail) {
@@ -116,7 +116,7 @@ class RestaurantDetailFragment : Fragment(R.layout.fragment_restaurant_detail) {
             .get()
             .addOnSuccessListener {
                 for (i in it.documents) {
-                    val restaurantInformations = i.toObject(restaurants::class.java)!!
+                    val restaurantInformations = i.toObject(Restaurants::class.java)!!
                     restaurantInformations.id = i.id
                     id = restaurantInformations.id
                     Log.v("IdRestaurant", "${i.id}")

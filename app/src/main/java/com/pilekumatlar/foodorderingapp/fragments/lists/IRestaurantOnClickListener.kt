@@ -1,8 +1,7 @@
 package com.pilekumatlar.foodorderingapp.fragments.lists
 
-import com.pilekumatlar.foodorderingapp.models.restaurants
-
+import com.pilekumatlar.foodorderingapp.models.Restaurants
 
 interface IRestaurantOnClickListener {
-    fun onClick(name: restaurants)
+    fun onClick(name: Restaurants)
 }

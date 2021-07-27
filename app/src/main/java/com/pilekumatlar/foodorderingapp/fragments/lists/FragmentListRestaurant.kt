@@ -12,9 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
 import com.pilekumatlar.foodorderingapp.R
-import com.pilekumatlar.foodorderingapp.databinding.FragmentFoodDetailBinding
 import com.pilekumatlar.foodorderingapp.databinding.FragmentListRestaurantBinding
-import com.pilekumatlar.foodorderingapp.models.restaurants
+import com.pilekumatlar.foodorderingapp.models.Restaurants
 
 class FragmentListRestaurant : Fragment(R.layout.fragment_list_restaurant) {
 
@@ -51,14 +50,12 @@ class FragmentListRestaurant : Fragment(R.layout.fragment_list_restaurant) {
         db.collection("Restaurants")
             .get()
             .addOnSuccessListener {
-                val listTwo = ArrayList<restaurants>()
+                val listTwo = ArrayList<Restaurants>()
                 for (i in it.documents) {
-                    val restaurantInformations = i.toObject(restaurants::class.java)!!
-                    if (restaurantInformations != null) {
-                        restaurantInformations.id = i.id
-                    }
+                    val restaurantInformations = i.toObject(Restaurants::class.java)!!
+                    restaurantInformations.id = i.id
                     listTwo.add(
-                        restaurants(
+                        Restaurants(
                             restaurantInformations.restaurantName,
                             restaurantInformations.restaurantLocation
                         )
@@ -76,12 +73,12 @@ class FragmentListRestaurant : Fragment(R.layout.fragment_list_restaurant) {
         restaurantRecyclerView.layoutManager = LinearLayoutManager(context)
         restaurantRecyclerView.adapter = adapter
         adapter.setRestaurantOnClickListener(object : IRestaurantOnClickListener {
-            override fun onClick(restaurants: restaurants) {
-                Toast.makeText(context, "${restaurants.restaurantName}", Toast.LENGTH_SHORT).show()
+            override fun onClick(Restaurants: Restaurants) {
+                Toast.makeText(context, "${Restaurants.restaurantName}", Toast.LENGTH_SHORT).show()
                 val action =
                     FragmentListRestaurantDirections.actionFragmentListRestaurantToRestaurantDetailFragment(
-                        restaurants.restaurantName,
-                        restaurants.restaurantLocation
+                        Restaurants.restaurantName,
+                        Restaurants.restaurantLocation
                     )
                 findNavController().navigate(action)
             }

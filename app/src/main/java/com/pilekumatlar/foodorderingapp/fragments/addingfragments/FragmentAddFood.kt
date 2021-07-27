@@ -9,24 +9,20 @@ import androidx.fragment.app.Fragment
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
 import com.pilekumatlar.foodorderingapp.R
-import com.pilekumatlar.foodorderingapp.databinding.ActivityMainBinding.inflate
 import com.pilekumatlar.foodorderingapp.databinding.FragmentAddFoodItemBinding
-import com.pilekumatlar.foodorderingapp.databinding.FragmentAddFoodItemBinding.inflate
 import com.pilekumatlar.foodorderingapp.models.FoodItem
-import com.pilekumatlar.foodorderingapp.models.restaurants
 
 class FragmentAddFood : Fragment(R.layout.fragment_add_food_item) {
     private var _binding: FragmentAddFoodItemBinding? = null
 
     private val binding get() = _binding!!
 
-
     private val mFirestore = FirebaseFirestore.getInstance()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         _binding = FragmentAddFoodItemBinding.inflate(inflater, container, false)
         return binding.root
@@ -37,9 +33,9 @@ class FragmentAddFood : Fragment(R.layout.fragment_add_food_item) {
 
         binding.textAddFood.setOnClickListener {
 
-            var foodName: String = binding.editTextFoodName.text.toString()
-            var foodDescription: String = binding.editTextFoodDescription.text.toString()
-            var foodPrice: String = binding.editTextFoodPrice.text.toString()
+            val foodName: String = binding.editTextFoodName.text.toString()
+            val foodDescription: String = binding.editTextFoodDescription.text.toString()
+            val foodPrice: String = binding.editTextFoodPrice.text.toString()
 
             val foodInformations = FoodItem(foodName, foodDescription, foodPrice)
 
