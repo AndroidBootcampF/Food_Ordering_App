@@ -55,7 +55,20 @@
         tools:layout="@layout/fragment_food_detail"
         android:id="@+id/foodDetailFragment"
         android:name="com.pilekumatlar.foodorderingapp.fragments.details.FoodDetailFragment"
-        android:label="FoodDetailFragment" />
+        android:label="FoodDetailFragment" >
+        <argument
+            android:name="name"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="price"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="description"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
     <fragment
         tools:layout="@layout/fragment_add_food_item"
         android:id="@+id/fragmentAddFood"

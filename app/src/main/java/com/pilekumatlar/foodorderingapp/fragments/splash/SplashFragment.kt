@@ -12,9 +12,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.airbnb.lottie.LottieAnimationView
 import com.pilekumatlar.foodorderingapp.R
-import com.pilekumatlar.foodorderingapp.fragments.lists.FragmentListRestaurantDirections
 
-class SplashFragment:Fragment(R.layout.fragment_splash) {
+class SplashFragment : Fragment(R.layout.fragment_splash) {
     lateinit var lottieView: LottieAnimationView
 
     override fun onCreateView(
@@ -23,7 +22,7 @@ class SplashFragment:Fragment(R.layout.fragment_splash) {
     ): View? {
 
         Handler(Looper.getMainLooper()).postDelayed({
-            val action= SplashFragmentDirections.actionSplashFragmentToFragmentListRestaurant()
+            val action = SplashFragmentDirections.actionSplashFragmentToFragmentListRestaurant()
             findNavController().navigate(action)
         }, 5000)
         // Inflate the layout for this fragment
@@ -33,7 +32,7 @@ class SplashFragment:Fragment(R.layout.fragment_splash) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         lottieView = view.findViewById(R.id.animation_view)
-        lottieView.addAnimatorListener(object: Animator.AnimatorListener {
+        lottieView.addAnimatorListener(object : Animator.AnimatorListener {
 
             override fun onAnimationStart(animation: Animator?) {
                 Toast.makeText(context, "Loading", Toast.LENGTH_SHORT).show()

@@ -10,10 +10,10 @@ import com.pilekumatlar.foodorderingapp.models.restaurants
 
 class FoodListAdapter : RecyclerView.Adapter<FoodListAdapter.ListViewHolder>() {
 
-    private var listFood=ArrayList<FoodItem>()
+    private var listFood = ArrayList<FoodItem>()
     private var listener: IFoodOnClickListener? = null
 
-    class ListViewHolder(val binding:ItemFoodBinding ) :
+    class ListViewHolder(val binding: ItemFoodBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(foodItem: FoodItem, listener: IFoodOnClickListener?) {
             binding.textName.text = foodItem.name
@@ -35,11 +35,11 @@ class FoodListAdapter : RecyclerView.Adapter<FoodListAdapter.ListViewHolder>() {
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         var item = this.listFood[position]
-       holder.bind(item,listener)
+        holder.bind(item, listener)
 
     }
 
-    override fun getItemCount(): Int =listFood.size
+    override fun getItemCount(): Int = listFood.size
 
     fun setFoodData(list: ArrayList<FoodItem>) {
         this.listFood = list

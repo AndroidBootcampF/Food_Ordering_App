@@ -12,10 +12,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
 import com.pilekumatlar.foodorderingapp.R
+import com.pilekumatlar.foodorderingapp.databinding.FragmentFoodDetailBinding
 import com.pilekumatlar.foodorderingapp.databinding.FragmentListRestaurantBinding
 import com.pilekumatlar.foodorderingapp.models.restaurants
 
 class FragmentListRestaurant : Fragment(R.layout.fragment_list_restaurant) {
+
+    private var _binding: FragmentListRestaurantBinding? = null
+
+    private val binding get() = _binding!!
 
     lateinit var restaurantRecyclerView: RecyclerView
 
@@ -25,15 +30,20 @@ class FragmentListRestaurant : Fragment(R.layout.fragment_list_restaurant) {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_list_restaurant, container, false)
+    ): View {
+        _binding = FragmentListRestaurantBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews(view)
         getDataFromFirebase()
-
+        binding.addRestaurantButton.setOnClickListener {
+            val action =
+                FragmentListRestaurantDirections.actionFragmentListRestaurantToFragmentAddRestaurant()
+            findNavController().navigate(action)
+        }
     }
 
     private fun getDataFromFirebase() {
@@ -72,15 +82,10 @@ class FragmentListRestaurant : Fragment(R.layout.fragment_list_restaurant) {
                     FragmentListRestaurantDirections.actionFragmentListRestaurantToRestaurantDetailFragment(
                         restaurants.restaurantName,
                         restaurants.restaurantLocation
-
                     )
                 findNavController().navigate(action)
             }
-
         })
-
     }
-
-
 }
 

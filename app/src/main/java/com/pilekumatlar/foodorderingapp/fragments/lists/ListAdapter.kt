@@ -39,7 +39,6 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
     override fun getItemCount(): Int = listTwo.size
 
 
-
     fun setRestaurantDataTwo(list: ArrayList<restaurants>) {
         this.listTwo = list
         notifyDataSetChanged()
