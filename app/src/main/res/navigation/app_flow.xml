@@ -6,10 +6,10 @@
     app:startDestination="@id/splashFragment">
 
     <fragment
-        tools:layout="@layout/fragment_list_restaurant"
         android:id="@+id/fragmentListRestaurant"
         android:name="com.pilekumatlar.foodorderingapp.fragments.lists.FragmentListRestaurant"
-        android:label="FragmentListRestaurant" >
+        android:label="FragmentListRestaurant"
+        tools:layout="@layout/fragment_list_restaurant">
         <action
             android:id="@+id/action_fragmentListRestaurant_to_fragmentAddRestaurant"
             app:destination="@id/fragmentAddRestaurant" />
@@ -18,24 +18,24 @@
             app:destination="@id/restaurantDetailFragment" />
     </fragment>
     <fragment
-        tools:layout="@layout/fragment_add_restaurant"
         android:id="@+id/fragmentAddRestaurant"
         android:name="com.pilekumatlar.foodorderingapp.fragments.addingfragments.FragmentAddRestaurant"
-        android:label="FragmentAddRestaurant" />
+        android:label="FragmentAddRestaurant"
+        tools:layout="@layout/fragment_add_restaurant" />
     <fragment
-        tools:layout="@layout/fragment_splash"
         android:id="@+id/splashFragment"
         android:name="com.pilekumatlar.foodorderingapp.fragments.splash.SplashFragment"
-        android:label="SplashFragment">
+        android:label="SplashFragment"
+        tools:layout="@layout/fragment_splash">
         <action
             android:id="@+id/action_splashFragment_to_fragmentListRestaurant"
             app:destination="@id/fragmentListRestaurant" />
     </fragment>
     <fragment
-        tools:layout="@layout/fragment_restaurant_detail"
         android:id="@+id/restaurantDetailFragment"
         android:name="com.pilekumatlar.foodorderingapp.fragments.details.RestaurantDetailFragment"
-        android:label="RestaurantDetailFragment" >
+        android:label="RestaurantDetailFragment"
+        tools:layout="@layout/fragment_restaurant_detail">
         <argument
             android:name="name"
             app:argType="string"
@@ -52,10 +52,10 @@
             app:destination="@id/fragmentAddFood" />
     </fragment>
     <fragment
-        tools:layout="@layout/fragment_food_detail"
         android:id="@+id/foodDetailFragment"
         android:name="com.pilekumatlar.foodorderingapp.fragments.details.FoodDetailFragment"
-        android:label="FoodDetailFragment" >
+        android:label="FoodDetailFragment"
+        tools:layout="@layout/fragment_food_detail">
         <argument
             android:name="name"
             app:argType="string"
@@ -70,10 +70,10 @@
             app:nullable="true" />
     </fragment>
     <fragment
-        tools:layout="@layout/fragment_add_food_item"
         android:id="@+id/fragmentAddFood"
         android:name="com.pilekumatlar.foodorderingapp.fragments.addingfragments.FragmentAddFood"
-        android:label="FragmentAddFood" >
+        android:label="FragmentAddFood"
+        tools:layout="@layout/fragment_add_food_item">
         <argument
             android:name="id"
             app:argType="string"
