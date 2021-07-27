@@ -6,4 +6,5 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class FoodItem(   var name: String="",
                        var description: String="",
-                       var price: String="") : Parcelable
+                       var price: String="",
+                        var id:String="") : Parcelable

@@ -1,22 +1,19 @@
-package com.pilekumatlar.foodorderingapp
+package com.pilekumatlar.foodorderingapp.fragments.details
 
-import android.graphics.drawable.ClipDrawable.HORIZONTAL
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout.HORIZONTAL
 import android.widget.TextView
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.google.firebase.firestore.FirebaseFirestore
-import com.pilekumatlar.foodorderingapp.databinding.FragmentRestaurantDetailBinding
+import com.pilekumatlar.foodorderingapp.R
 import com.pilekumatlar.foodorderingapp.fragments.lists.*
 import com.pilekumatlar.foodorderingapp.models.FoodItem
 import com.pilekumatlar.foodorderingapp.models.restaurants
@@ -35,7 +32,6 @@ class RestaurantDetailFragment : Fragment(R.layout.fragment_restaurant_detail) {
     ): View? {
         return inflater.inflate(R.layout.fragment_restaurant_detail, container, false)
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews(view)
@@ -60,19 +56,22 @@ class RestaurantDetailFragment : Fragment(R.layout.fragment_restaurant_detail) {
         adapter_two.setFoodOnClickListener(object : IFoodOnClickListener {
             override fun onClick(foodItem: FoodItem) {
                 Toast.makeText(context,"${foodItem.name}", Toast.LENGTH_SHORT).show()
+                val action=RestaurantDetailFragmentDirections.actionRestaurantDetailFragmentToFoodDetailFragment()
+                findNavController().navigate(action)
             }
-
         })
     }
 
     private fun getDataFromFirebase() {
         val db = FirebaseFirestore.getInstance()
         db.collection("Foods")
+            .whereEqualTo("Id",getRestaurantId())
             .get()
             .addOnSuccessListener {
                 val listTwo = ArrayList<FoodItem>()
                 for (i in it.documents) {
                     val foodInformations = i.toObject(FoodItem::class.java)!!
+                Log.v("Foods","${foodInformations.name}")
                     listTwo.add(
                         FoodItem(
                             foodInformations.name,
@@ -85,5 +84,25 @@ class RestaurantDetailFragment : Fragment(R.layout.fragment_restaurant_detail) {
             }.addOnFailureListener {
                 Log.v("Hata", "Hata Alındı")
             }
+    }
+     fun getRestaurantId():String{
+         var id:String= "03eK2ONr1UrR0OJUkW6j"
+        val db = FirebaseFirestore.getInstance()
+
+        db.collection("Restaurants")
+            .get()
+            .addOnSuccessListener {
+                for (i in it.documents) {
+                    var restaurantInformations = i.toObject(restaurants::class.java)!!
+                    if (restaurantInformations != null) {
+                        restaurantInformations.id = i.id
+                        id=restaurantInformations.id
+                        Log.v("IdRestaurant","${i.id}")
+                    }
+                }
+            }.addOnFailureListener {
+                Log.v("Hata", "Hata Alındı")
+            }
+         return id
     }
 }

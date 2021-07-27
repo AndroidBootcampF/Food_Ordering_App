@@ -44,6 +44,9 @@ class FragmentListRestaurant : Fragment(R.layout.fragment_list_restaurant) {
                 val listTwo = ArrayList<restaurants>()
                 for (i in it.documents) {
                     val restaurantInformations = i.toObject(restaurants::class.java)!!
+                    if (restaurantInformations != null) {
+                        restaurantInformations.id = i.id
+                    }
                     listTwo.add(
                         restaurants(
                             restaurantInformations.restaurantName,
@@ -64,12 +67,13 @@ class FragmentListRestaurant : Fragment(R.layout.fragment_list_restaurant) {
         restaurantRecyclerView.adapter = adapter
         adapter.setRestaurantOnClickListener(object : IRestaurantOnClickListener {
             override fun onClick(restaurants: restaurants) {
-                Toast.makeText(context,"${restaurants.restaurantName}",Toast.LENGTH_SHORT).show()
-                val action=FragmentListRestaurantDirections.actionFragmentListRestaurantToRestaurantDetailFragment(
-                    restaurants.restaurantName,
-                    restaurants.restaurantLocation
+                Toast.makeText(context, "${restaurants.restaurantName}", Toast.LENGTH_SHORT).show()
+                val action =
+                    FragmentListRestaurantDirections.actionFragmentListRestaurantToRestaurantDetailFragment(
+                        restaurants.restaurantName,
+                        restaurants.restaurantLocation
 
-                )
+                    )
                 findNavController().navigate(action)
             }
 

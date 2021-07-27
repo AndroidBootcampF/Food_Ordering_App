@@ -34,7 +34,7 @@
     <fragment
         tools:layout="@layout/fragment_restaurant_detail"
         android:id="@+id/restaurantDetailFragment"
-        android:name="com.pilekumatlar.foodorderingapp.RestaurantDetailFragment"
+        android:name="com.pilekumatlar.foodorderingapp.fragments.details.RestaurantDetailFragment"
         android:label="RestaurantDetailFragment" >
         <argument
             android:name="name"
@@ -42,6 +42,27 @@
             app:nullable="true" />
         <argument
             android:name="location"
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_restaurantDetailFragment_to_foodDetailFragment"
+            app:destination="@id/foodDetailFragment" />
+        <action
+            android:id="@+id/action_restaurantDetailFragment_to_fragmentAddFood"
+            app:destination="@id/fragmentAddFood" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_food_detail"
+        android:id="@+id/foodDetailFragment"
+        android:name="com.pilekumatlar.foodorderingapp.fragments.details.FoodDetailFragment"
+        android:label="FoodDetailFragment" />
+    <fragment
+        tools:layout="@layout/fragment_add_food_item"
+        android:id="@+id/fragmentAddFood"
+        android:name="com.pilekumatlar.foodorderingapp.fragments.addingfragments.FragmentAddFood"
+        android:label="FragmentAddFood" >
+        <argument
+            android:name="id"
             app:argType="string"
             app:nullable="true" />
     </fragment>

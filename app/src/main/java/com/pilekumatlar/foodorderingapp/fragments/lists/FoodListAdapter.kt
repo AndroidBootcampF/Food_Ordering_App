@@ -18,12 +18,13 @@ class FoodListAdapter : RecyclerView.Adapter<FoodListAdapter.ListViewHolder>() {
         fun bind(foodItem: FoodItem, listener: IFoodOnClickListener?) {
             binding.textName.text = foodItem.name
             binding.textPrice.text = foodItem.price
+            binding.itemFoodCardView.setOnClickListener { listener?.onClick(foodItem) }
 
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoodListAdapter.ListViewHolder {
-        return FoodListAdapter.ListViewHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
+        return ListViewHolder(
             ItemFoodBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
@@ -32,9 +33,10 @@ class FoodListAdapter : RecyclerView.Adapter<FoodListAdapter.ListViewHolder>() {
         )
     }
 
-    override fun onBindViewHolder(holder: FoodListAdapter.ListViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         var item = this.listFood[position]
        holder.bind(item,listener)
+
     }
 
     override fun getItemCount(): Int =listFood.size
