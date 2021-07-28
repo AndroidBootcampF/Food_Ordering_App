@@ -1,5 +1,7 @@
 package com.pilekumatlar.foodorderingapp.fragments.addingfragments
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -23,12 +25,13 @@ class FragmentAddFood : Fragment(R.layout.fragment_add_food_item) {
 
     private val mFirestore = FirebaseFirestore.getInstance()
 
+    val REQUEST_CODE = 100
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         _binding = FragmentAddFoodItemBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -37,7 +40,6 @@ class FragmentAddFood : Fragment(R.layout.fragment_add_food_item) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.textAddFood.setOnClickListener {
-
             val foodName: String = binding.editTextFoodName.text.toString()
             val foodDescription: String = binding.editTextFoodDescription.text.toString()
             val foodPrice: String = binding.editTextFoodPrice.text.toString()
@@ -50,12 +52,25 @@ class FragmentAddFood : Fragment(R.layout.fragment_add_food_item) {
                 .set(foodInformations, SetOptions.merge())
                 .addOnSuccessListener {
                     Toast.makeText(context, "Yemek Ekleme Başarılı", Toast.LENGTH_SHORT).show()
-                    val action = FragmentAddFoodDirections.actionFragmentAddFoodToFragmentListRestaurant()
+                    val action =
+                        FragmentAddFoodDirections.actionFragmentAddFoodToFragmentListRestaurant()
                     findNavController().navigate(action)
                 }
                 .addOnFailureListener {
                     Log.v("Yemek", "Ekleme Başarısız")
                 }
+        }
+        binding.buttonUploadImage.setOnClickListener {
+            val intent = Intent(Intent.ACTION_PICK)
+            intent.type = "image/*"
+            startActivityForResult(intent, REQUEST_CODE)
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE) {
+            binding.imageView.setImageURI(data?.data) // handle chosen image
         }
     }
 }
