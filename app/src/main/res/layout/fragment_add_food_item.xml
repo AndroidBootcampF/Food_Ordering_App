@@ -78,7 +78,7 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextFoodPrice" />
 
     <Button
-        android:id="@+id/btnAddImage"
+        android:id="@+id/buttonUploadImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -115,7 +115,7 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnAddImage" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonUploadImage" />
 
     <TextView
         android:id="@+id/textAddFood"
@@ -129,5 +129,5 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnAddImage" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonUploadImage" />
 </androidx.constraintlayout.widget.ConstraintLayout>
