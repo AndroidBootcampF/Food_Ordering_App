@@ -2,12 +2,12 @@ package com.pilekumatlar.foodorderingapp.fragments.details
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,7 +18,6 @@ import com.pilekumatlar.foodorderingapp.databinding.FragmentRestaurantDetailBind
 import com.pilekumatlar.foodorderingapp.fragments.lists.*
 import com.pilekumatlar.foodorderingapp.models.FoodItem
 import com.pilekumatlar.foodorderingapp.models.Restaurants
-
 
 class RestaurantDetailFragment : Fragment(R.layout.fragment_restaurant_detail) {
     private val args: RestaurantDetailFragmentArgs by navArgs()
@@ -32,7 +31,8 @@ class RestaurantDetailFragment : Fragment(R.layout.fragment_restaurant_detail) {
     private val binding get() = _binding!!
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentRestaurantDetailBinding.inflate(inflater, container, false)
@@ -45,10 +45,10 @@ class RestaurantDetailFragment : Fragment(R.layout.fragment_restaurant_detail) {
         handleArgs()
         getDataFromFirebase()
         binding.buttonAddFood.setOnClickListener {
-            Toast.makeText(context, getRestaurantId(), Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, args.id, Toast.LENGTH_SHORT).show()
             val action =
                 RestaurantDetailFragmentDirections.actionRestaurantDetailFragmentToFragmentAddFood(
-                    getRestaurantId()
+                    args.id
                 )
             findNavController().navigate(action)
         }
@@ -87,7 +87,7 @@ class RestaurantDetailFragment : Fragment(R.layout.fragment_restaurant_detail) {
     private fun getDataFromFirebase() {
         val db = FirebaseFirestore.getInstance()
         db.collection("Foods")
-            //.whereEqualTo("Id", getRestaurantId())
+            .whereEqualTo("id", args.id)
             .get()
             .addOnSuccessListener {
                 val listTwo = ArrayList<FoodItem>()
@@ -108,22 +108,4 @@ class RestaurantDetailFragment : Fragment(R.layout.fragment_restaurant_detail) {
             }
     }
 
-    fun getRestaurantId(): String {
-        var id = "03eK2ONr1UrR0OJUkW6j"
-        val db = FirebaseFirestore.getInstance()
-
-        db.collection("Restaurants")
-            .get()
-            .addOnSuccessListener {
-                for (i in it.documents) {
-                    val restaurantInformations = i.toObject(Restaurants::class.java)!!
-                    restaurantInformations.id = i.id
-                    id = restaurantInformations.id
-                    Log.v("IdRestaurant", "${i.id}")
-                }
-            }.addOnFailureListener {
-                Log.v("Hata", "Hata Alındı")
-            }
-        return id
-    }
 }

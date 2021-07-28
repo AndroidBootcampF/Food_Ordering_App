@@ -10,6 +10,7 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
     private var listTwo = ArrayList<Restaurants>()
 
     private var listener: IRestaurantOnClickListener? = null
+    public var position_two: Int = 0
 
     class ListViewHolder(val binding: ItemRestaurantsBinding) :
         RecyclerView.ViewHolder(binding.root) {

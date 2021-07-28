@@ -14,5 +14,8 @@
 
     <color name="red">#ff0004</color>
     <color name="selectedRed">#b50003</color>
->>>>>>> 2dfd4dee8587bd632d0a552648205e03a1d4c704
+
+    <color name="red_one">#DF0000</color>
+    <color name="orange_two">#FB8C00</color>
+    <color name="blue">#14A4F1</color>
 </resources>

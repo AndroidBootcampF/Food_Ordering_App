@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -57,7 +58,8 @@ class FragmentListRestaurant : Fragment(R.layout.fragment_list_restaurant) {
                     listTwo.add(
                         Restaurants(
                             restaurantInformations.restaurantName,
-                            restaurantInformations.restaurantLocation
+                            restaurantInformations.restaurantLocation,
+                            restaurantInformations.id
                         )
                     )
                 }
@@ -67,22 +69,22 @@ class FragmentListRestaurant : Fragment(R.layout.fragment_list_restaurant) {
             }
     }
 
-
     private fun initViews(view: View) {
         restaurantRecyclerView = view.findViewById(R.id.restaurantsRecyclerView)
         restaurantRecyclerView.layoutManager = LinearLayoutManager(context)
         restaurantRecyclerView.adapter = adapter
         adapter.setRestaurantOnClickListener(object : IRestaurantOnClickListener {
-            override fun onClick(Restaurants: Restaurants) {
-                Toast.makeText(context, "${Restaurants.restaurantName}", Toast.LENGTH_SHORT).show()
+            override fun onClick(restaurants: Restaurants) {
+
+                //Toast.makeText(context, "$restaurants", Toast.LENGTH_SHORT).show()
                 val action =
                     FragmentListRestaurantDirections.actionFragmentListRestaurantToRestaurantDetailFragment(
-                        Restaurants.restaurantName,
-                        Restaurants.restaurantLocation
+                        restaurants.restaurantName,
+                        restaurants.restaurantLocation,
+                        restaurants.id
                     )
                 findNavController().navigate(action)
             }
         })
     }
 }
-
