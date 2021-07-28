@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -18,6 +19,7 @@ import com.pilekumatlar.foodorderingapp.models.restaurants
 class FragmentListRestaurant : Fragment(R.layout.fragment_list_restaurant) {
 
     lateinit var restaurantRecyclerView: RecyclerView
+    lateinit var addRestaurantButton:Button
 
     private val adapter = ListAdapter()
 
@@ -62,6 +64,7 @@ class FragmentListRestaurant : Fragment(R.layout.fragment_list_restaurant) {
 
 
     private fun initViews(view: View) {
+        addRestaurantButton=view.findViewById(R.id.addRestaurantButton)
         restaurantRecyclerView = view.findViewById(R.id.restaurantsRecyclerView)
         restaurantRecyclerView.layoutManager = LinearLayoutManager(context)
         restaurantRecyclerView.adapter = adapter
@@ -78,6 +81,14 @@ class FragmentListRestaurant : Fragment(R.layout.fragment_list_restaurant) {
             }
 
         })
+
+        addRestaurantButton.setOnClickListener {
+            val action =
+                FragmentListRestaurantDirections.actionFragmentListRestaurantToFragmentAddRestaurant(
+
+                )
+            findNavController().navigate(action)
+        }
 
     }
 
