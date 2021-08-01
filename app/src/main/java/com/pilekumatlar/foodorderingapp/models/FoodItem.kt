@@ -8,5 +8,6 @@ data class FoodItem(
     var name: String = "",
     var description: String = "",
     var price: String = "",
-    var id: String = ""
+    var id: String = "",
+    var imgUrl: String = "",
 ) : Parcelable
