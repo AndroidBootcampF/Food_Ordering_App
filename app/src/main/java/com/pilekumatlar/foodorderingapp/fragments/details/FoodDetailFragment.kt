@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
+import com.bumptech.glide.Glide
 import com.pilekumatlar.foodorderingapp.R
 import com.pilekumatlar.foodorderingapp.databinding.FragmentFoodDetailBinding
 
@@ -31,6 +32,7 @@ class FoodDetailFragment : Fragment(R.layout.fragment_food_detail) {
             textViewFoodName.text = args.name
             textViewFoodPrice.text = args.price
             textViewFoodDescription.text = args.description
+            Glide.with(this@FoodDetailFragment).load(args.url).into(imageViewFood)
         }
     }
 

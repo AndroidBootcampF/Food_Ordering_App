@@ -15,16 +15,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
 import com.pilekumatlar.foodorderingapp.R
 import com.pilekumatlar.foodorderingapp.databinding.FragmentRestaurantDetailBinding
-import com.pilekumatlar.foodorderingapp.fragments.lists.*
+import com.pilekumatlar.foodorderingapp.fragments.lists.FoodListAdapter
+import com.pilekumatlar.foodorderingapp.fragments.lists.IFoodOnClickListener
 import com.pilekumatlar.foodorderingapp.models.FoodItem
-import com.pilekumatlar.foodorderingapp.models.Restaurants
 
 class RestaurantDetailFragment : Fragment(R.layout.fragment_restaurant_detail) {
     private val args: RestaurantDetailFragmentArgs by navArgs()
     private lateinit var nameTextView: TextView
     private lateinit var locationTextView: TextView
-    private val adapter_two = FoodListAdapter()
-    lateinit var foodsRecyclerView: RecyclerView
+    private val adapterTwo = FoodListAdapter()
+    private lateinit var foodsRecyclerView: RecyclerView
 
     private var _binding: FragmentRestaurantDetailBinding? = null
 
@@ -69,15 +69,15 @@ class RestaurantDetailFragment : Fragment(R.layout.fragment_restaurant_detail) {
         foodsRecyclerView = view.findViewById(R.id.foodsRecyclerView)
         foodsRecyclerView.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        foodsRecyclerView.adapter = adapter_two
-        adapter_two.setFoodOnClickListener(object : IFoodOnClickListener {
-            override fun onClick(foodItem: FoodItem) {
-                Toast.makeText(context, "${foodItem.name}", Toast.LENGTH_SHORT).show()
+        foodsRecyclerView.adapter = adapterTwo
+        adapterTwo.setFoodOnClickListener(object : IFoodOnClickListener {
+            override fun onClick(name: FoodItem) {
                 val action =
                     RestaurantDetailFragmentDirections.actionRestaurantDetailFragmentToFoodDetailFragment(
-                        foodItem.name,
-                        foodItem.price,
-                        foodItem.description
+                        name.name,
+                        name.price,
+                        name.description,
+                        name.imgUrl
                     )
                 findNavController().navigate(action)
             }
@@ -93,19 +93,19 @@ class RestaurantDetailFragment : Fragment(R.layout.fragment_restaurant_detail) {
                 val listTwo = ArrayList<FoodItem>()
                 for (i in it.documents) {
                     val foodInformations = i.toObject(FoodItem::class.java)!!
-                    Log.v("Foods", "${foodInformations.name}")
                     listTwo.add(
                         FoodItem(
                             foodInformations.name,
                             foodInformations.description,
-                            foodInformations.price
+                            foodInformations.price,
+                            foodInformations.id,
+                            foodInformations.imgUrl
                         )
                     )
                 }
-                adapter_two.setFoodData(listTwo)
+                adapterTwo.setFoodData(listTwo)
             }.addOnFailureListener {
                 Log.v("Hata", "Hata Alındı")
             }
     }
-
 }
